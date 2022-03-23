@@ -1,0 +1,16 @@
+Usabilidad: (normalmente tiene prioridad): "facilidad de uso" (maximizar la satisfacción del usuario con un producto)
+Correctitud: "La funcionalidad es la esperada"
+Rendimiento: "Uso eficiente de recursos"
+- tiempo
+- memoria
+Mantenibilidad: "Capacidad de evolcionar ante cambios"
+Reuso/Extensibilidad: "capacidad de reutilizar partes sin cambiarlas"
+Modularidad: "descomposición adecuada en partes coherentes y desacopladas"
+Robustez: "reacción/manejo apropiado ante/de errores"
+Enfoques:
+- Marco: Arquitectura
+- Micro: algoritmos y estructuras de datos
+
+http://ensep.com.mx/contenidos/antologias_red/BIGGS/BIGSS%201/M2.18%20EVALUACION%20Y%20SELECCION%20DE%20SOFTWARE%20EDUCATIVO.pdf
+https://revistas.uis.edu.co/index.php/revistauisingenierias/article/view/1055
+http://lcc.uma.es/~av/Publicaciones/02/CalidadDSBC.pdf
