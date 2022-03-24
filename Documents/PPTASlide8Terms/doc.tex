@@ -1,0 +1,38 @@
+\documentclass[aspectratio=43, natbib]{beamer}
+\usepackage[spanish]{babel}
+\input{inputDocuments/preamble.tex}
+
+\title{Presentación A Slide 8} %->->->->-> Check hyperref title <-<-<-<-<-
+\subtitle{Otros criterios de calidad}
+\author[D. Quirós Artiñano]{\textcolor{yellow}{Diego Quirós Artiñano}}
+\institute[UNA]{
+    \textcolor{white}{EIF-203: Estructuras Discretas}%
+    \\%
+    \textcolor{white}{Universidad Nacional de Costa Rica}%
+} %You can change the Institution if you are from somewhere else
+\date{24 de marzo, 2022}
+%\logo{\includegraphics[width= 0.05\textwidth]{images/logo.png}}
+
+\begin{document}
+    
+    \frame{\titlepage}
+    
+    \begin{frame}{Términos}
+        \tableofcontents
+    \end{frame}
+    
+    \input{inputDocuments/terms.tex}
+    
+    
+   \section*{References} %You can remove this if you do not want to use it
+       \begin{frame}{References}
+           \printbibliography
+       \end{frame}
+
+    \section{}
+    \begin{frame}{}
+        \centering
+            \Huge\bfseries
+        \textcolor{yellow}{The End}
+    \end{frame}
+\end{document}

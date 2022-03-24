@@ -59,16 +59,16 @@ PASO-6
 
 def buscar_for_instrumentado(x:int, a:'list[int]') -> int:
     contador_operaciones = 0
-    contador_operaciones += 2 #crear range y la asignacion del len
-    for p in range(len(a)): #asignar p, verificar tamano
-        contador_operaciones += 2 # las dos cosas del if
+    contador_operaciones += 1 #crear range y todas las operaciones dentre de este
+    for p in range(len(a)):
+        contador_operaciones += 2 # == y []
         if x == a[p]:
-            return contador_operaciones#ultima verificacion
+            return contador_operaciones
     return contador_operaciones
 
 def test_buscar_instrumentado(filename, init, maxi, inc):
     file = open(filename, 'w')
-    file.write('n;timeW;timeF\n')
+    file.write('n;time_while;time_for\n')
     for n in range(init, maxi, inc):
         a = list(range(n))
         x = n
