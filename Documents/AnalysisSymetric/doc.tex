@@ -90,8 +90,8 @@
 \end{lstlisting}
 \begin{enumerate}
     \setcounter{enumi}{0}
-    \item Tamaño de los datos \\
-El método se construyó de manera en la que no busque la diagonal de la matriz y solo se tiene que buscar la parte de arriba, entonces el tamaño de datos es $frac{n(n-1)}{2}$
+    \item Tamaño de los datos \\s
+El método se construyó de manera en la que no busque la diagonal de la matriz y solo se tiene que buscar la parte de arriba, entonces el tamaño de datos es $\frac{n(n-1)}{2}$
     \item Operaciones de Interés \\
     \begin{table}[h]
         \centering
@@ -103,7 +103,7 @@ El método se construyó de manera en la que no busque la diagonal de la matriz 
          \hline
          $T_{!=}$ & i != j or a[i][j] != a[j][i] & constante \\
          \hline
-         $T_{[]}$ & a[i][j] or a[j][i] & constante [1ex]
+         $T_{[]}$ & a[i][j] or a[j][i] & constante \\ [1ex]
          \hline
         \end{tabular}
         \caption{Operaciones es\_simetrica()}
@@ -116,56 +116,59 @@ El método se construyó de manera en la que no busque la diagonal de la matriz 
 \begin{lstlisting}[language=Python]
     # Separando por partes
     # Parte 1
-    p:int = 0
-    # Parte 2
-    while p < len(a):
-        if x == a[p]:
-            return p
-        else:
-            p += 1
+    for i in range(len(a)):
+        # Parte 2.1
+        for j in range(i+1, len(a[i])):
+            Parte 2.2
+            if i != j and a[i][j] != a[j][i]:
+                return False
     # Parte 3
-    return -1
+    return True
 \end{lstlisting}
 
-\[T_{buscar\_while()}(n) = T_{parte1} + T_{parte2} + T_{parte3} \] \\ 
-\[T_{buscar\_while()}(n) = 1 + T_{while()}(n) + 0\] \\
-\[T_{buscar\_while()}(n) = T_{while()}(n) + 1\] \\
-Evaluando $T_{while()}(n)$: \\
-2 operaciones: < y len(a) \\
-2 operaciones: == y $[]$ \\
-1 operación: +=
+\[T_{es\_simetrica()}(n) = T_{parte1} + T_{parte2} + T_{parte3} \] \\ 
+\[T_{es_simetrica()}(n) = 1 + T_{for()}(n) + 0\] \\
+\[T_{es_simetrica()}(n) = T_{for()}(n) + 1\] \\
+Evaluando $T_{for()}(n)$: (Parte 2.1) \\
+1 operación: del range cada vez que i cambia \\
 
-Entonces: \[T_{while()}(n) = 2 + 2 + 1 + T_{while()}(n-1)\] \\
-\[T_{while()}(n) = 5 + 5 + 5 + ... T_{while()}(0)\] \\
-Como el while va a verificar si sigue siendo parte del while entonces se cuentan las primeras 2 operaciones otra vez:
-\[T_{while()}(N) = 5n + 2\]
+Entonces: \[T_{for()}(n) = 1 + T_{for()_{for()}} + T_{for()}(n-1)\] \\
+\[T_{for()}(n) = 1 + T_{for()_{for()}}(n) + 1 + T_{for()_{for()}}(n-1) + 1 + T_{for()_{for()}}(n-2) + ... T_{for()}(0)\] \\
+\[T_{for()}(n) = n + T_{for()_{for()}}(n) + T_{for()_{for()}}(n-1) + ... T_{for()_{for()}}(1)\] \\
+
+Evaluando para $T_{for()_{for()}}(n)$: (2.2)
+6 operaciones: != y los 4 $[]$'s cada vez que cambia j\\
+\[T_{for()_{for()}}(n) = 2 + 4 + T_{for()_{for()}}(n-1)\] \\ 
+\[T_{for()_{for()}}(n) = 6 + 6 + 6 + ... + T_{for()_{for()}}(0)\] \\
+$T_{for()_{for()}}(0)$ es igual a 0 porque sale del for sin verificar otra vez
+\[T_{for()_{for()}}(n) = 6n\]
+Metiendolo en la Parte 2.1
+\[T_{for()}(n) = n + 6n + 6(n-1) + 6(n-2) + ... + 6\] \\ 
+\[T_{for()}(n) = n + 6(\frac{n*(n+1)}{2})\] \\
+
 
 \begin{enumerate}
     \setcounter{enumi}{3}
     \item Volviendo a meter en la ecuación original:
-\[T_{buscar\_while()}(n) = 5n + 2 + 1\] \\
-\[T_{buscar\_while()}(n) = 5n + 3\] \\
+    \[T_{es_simetrica()}(n) = n + 6(\frac{n*(n+1)}{2}) + 1\] \\
+    \[T_{es_simetrica()}(n) = (n + 1) + 6(\frac{n*(n+1)}{2})\] \\
+    \[T_{es_simetrica()}(n) = (n + 1) + 3(n*(n + 1))\] \\
+    \[T_{es_simetrica()}(n) = (n + 1) + 3(n^2 + n)\] \\
+    \[T_{es_simetrica()}(n) = 3n^2 + 4n + 1\] \\
     \item Orden de crecimiento \\
-Como la ecuación es una función lineal entonces el orden de crecimiento también lo cual significa que: $O(n) \sim T_{buscar_while()}(n)$
+El orden de crecimiento es el que es cuando la ecuación de tiempo es parabólica.
     \item Código
 \end{enumerate}
 \begin{lstlisting}[language=Python]
-    def buscar_while_instrumentado(x:int, a:list[int])-> int:
-        contador_operaciones = 0
-        p:int = 0
-        contador_operaciones += 1
-        no_salir = p < len(a)
-        contador_operaciones += 2
-        while no_salir:
-            if x == a[p]:
-                contador_operaciones += 2
-                return contador_operaciones
-            else:
-                contador_operaciones += 2
-                p += 1
-                contador_operaciones += 1
-            no_salir = p < len(a)
-            contador_operaciones += 2
+    def es_simetrica_instrumentado(a:'list[list[int]]')-> int:
+        contador_operaciones:int = 0
+        contador_operaciones += 1 # range de afuera
+        for i in range(len(a)):
+            contador_operaciones += 1 # cada range nuevo cuando cambia el i
+            for j in range(i, len(a[i])):
+                contador_operaciones += 6 # 2 != y 4 []'s
+                if i != j and a[i][j] != a[j][i]:
+                    return contador_operaciones
         return contador_operaciones
 \end{lstlisting}
 
@@ -173,21 +176,24 @@ Como la ecuación es una función lineal entonces el orden de crecimiento tambi�
 Para importar a Excel para hacer la gráfica, se hizo este código:
 {\scriptsize
 \begin{lstlisting}[language=Python]
-    def test_buscar_instrumentado(filename, init, maxi, inc):
+    def test_simetrica_instrumentado(filename, init, maxi, inc):
         file = open(filename, 'w')
-        file.write('n;time_while;time_for\n')
+        file.write('n;time\n')
         for n in range(init, maxi, inc):
-            a = list(range(n))
-            x = n
-            file.write(f'{n};{buscar_while_instrumentado(x,a)};{buscar_for_instrumentado(x,a)}\n')
+            a = []
+            for i in range(n):
+                a.append([])
+                for j in range(n):
+                    a[i].append(1)
+            file.write(f'{n};{es_simetrica_instrumentado(a)}\n')
         file.close()
-    test_buscar_instrumentado('buscar_instrumentado.csv', 10, 200, 10)
+    test_simetrica_instrumentado('simetrica_instrumentado.csv', 10, 200, 10)
 \end{lstlisting}}
 
 \begin{figure}[h]
     \centering
-    %\includegraphics[width=1.2\textwidth]{CroppedExcelGraph.png}
-    \caption{Gráfica de los métodos en Excel}
+    \includegraphics[width=1\textwidth]{Screenshot 2022-03-24 044713.png}
+    \caption{Gráfica del método en Excel}
     \label{fig:figureExcel1}
 \end{figure}
 \nocite{Clase21Mar}
