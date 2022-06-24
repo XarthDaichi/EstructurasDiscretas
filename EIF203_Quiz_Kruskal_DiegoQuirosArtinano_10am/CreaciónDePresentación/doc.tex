@@ -1,0 +1,52 @@
+\documentclass[aspectratio=43]{beamer}
+\usepackage[spanish]{babel}
+\selectlanguage{spanish}
+\input{chapters/preamble}
+
+\title{EIF203 Quiz Kruskal} %->->->->-> Check hyperref title <-<-<-<-<-
+\subtitle{Análisis del algoritmo de Kruskal}
+\author[D. Quirós Artiñano]{\textcolor{yellow}{Diego Quirós Artiñano}\\ \small ID:901150326}
+\institute[UNA]{
+    \textcolor{white}{EIF-203: Estructuras Discretas NRC: 41712}%
+    \\%
+    \textcolor{white}{Universidad Nacional de Costa Rica}%
+} %You can change the Institution if you are from somewhere else
+\date{13 de junio, 2022}
+\logo{\includegraphics[width= 0.08\textwidth]{../../../UNAImage/UNA.png}}
+
+\begin{document}
+    
+    \frame{\titlepage}
+
+    \begin{frame}{Declaración Jurada}
+        \textit{Declaro de manera jurada que este trabajo fue elaborado por mi persona de manera estrictamente individual y que las fuentes usadas son la declaradas en la lámina de referencias, las cuales sirvieron de base pero no fueron usadas como copia literal.}
+    \end{frame}
+
+    \section*{References} %You can remove this if you do not want to use it
+        \begin{frame}[allowframebreaks]{Referencias}
+            \printbibliography
+        \end{frame}
+    
+    \begin{frame}{Tabla de Contenidos}
+        \tableofcontents
+    \end{frame}
+
+    \input{chapters/Definitionsandexplanation}
+    \input{chapters/kruskalAlgorithm}
+    \input{chapters/Examples}
+
+    % \input{chapters/blocksandcolors}
+    
+    % \input{chapters/boxesandcolumns}
+    
+    % \input{chapters/equationandfigure} 
+    
+    % \input{chapters/graphsandothertikz}
+
+    % \section{}
+    % \begin{frame}{}
+    %     \centering
+    %         \Huge\bfseries
+    %     \textcolor{yellow}{The End}
+    % \end{frame}
+\end{document}
